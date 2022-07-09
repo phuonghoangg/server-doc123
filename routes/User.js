@@ -16,6 +16,9 @@ router.get("/:id",userController.getAnUser)
 
 router.put("/:id",middlewareController.verifyToken,userController.UpdateUser)
 router.delete("/:id",middlewareController.verifyToken,userController.DeleteUser)
+router.get("/zxczx",(req,res)=>{
+    res.send("asdasd")
+})
 
 
 module.exports = router
