@@ -53,6 +53,16 @@ const docController = {
             return res.status(400).json(error)
             
         }
+    },
+    FindDoc:async(req,res)=>{
+        try {
+            const doc = await Doc.find({title : {$regex:`${req.params.id}`}})
+            
+            return res.status(200).json(doc)
+        } catch (error) {
+            return res.status(400).json(error)
+            
+        }
     }
 };
 
