@@ -20,6 +20,9 @@ app.use(morgan("common"))
 
 app.use("/v1/user",userRoute)
 app.use("/v1/doc",docRoute)
+app.get("/",(req,res)=>{
+    res.send("asdasd")
+})
 
 
 

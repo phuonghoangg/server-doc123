@@ -28,6 +28,11 @@ const userSchema = new  mongoose.Schema({
         type:Boolean,
         default:false,
     },
+    imageURL:{
+        type:String,
+       
+        default:"",
+    },
 
     docs:[
         {
