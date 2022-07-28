@@ -55,10 +55,25 @@ const docController = {
         }
     },
     FindDoc:async(req,res)=>{
+        const PAGE_SIZE = 2
         try {
-            const doc = await Doc.find({title : {$regex:`${req.params.id}`}})
+            var page =  req.query.page
+            if(page){
+                //get phan trang
+                page = parseInt(page)
+                var skipNumber = (page-1) * PAGE_SIZE
+
+                const doc = await Doc.find({title : {$regex:`${req.params.id}`}}).skip(skipNumber).limit(PAGE_SIZE)
+                return res.status(200).json(doc)
+
+            }else{
+                //getAll
+                const doc = await Doc.find({title : {$regex:`${req.params.id}`}}).limit(PAGE_SIZE)
             
-            return res.status(200).json(doc)
+                return res.status(200).json(doc)
+            }
+
+           
         } catch (error) {
             return res.status(400).json(error)
             
